@@ -140,8 +140,8 @@ if (contactForm) {
           status.textContent = "";
         }
         contactForm.reset();
-        // Show success toast
-        showToast();
+        // Show success popup
+        showPopup();
       })
       .catch(() => {
         if (status) {
@@ -158,23 +158,31 @@ if (contactForm) {
   });
 }
 
-// ── Toast popup handler ──
-let toastTimer = null;
-function showToast() {
-  const toast = document.getElementById("success-toast");
-  if (!toast) return;
-  toast.classList.add("show");
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => {
-    toast.classList.remove("show");
-  }, 3000);
+// ── Popup handler ──
+let popupTimer = null;
+
+function hidePopup() {
+  const popup = document.getElementById("success-popup");
+  if (popup) popup.classList.remove("show");
+  clearTimeout(popupTimer);
 }
 
-const toastClose = document.getElementById("toast-close");
-if (toastClose) {
-  toastClose.addEventListener("click", () => {
-    const toast = document.getElementById("success-toast");
-    if (toast) toast.classList.remove("show");
-    clearTimeout(toastTimer);
+function showPopup() {
+  const popup = document.getElementById("success-popup");
+  if (!popup) return;
+  popup.classList.add("show");
+  clearTimeout(popupTimer);
+  popupTimer = setTimeout(hidePopup, 3000);
+}
+
+const popupClose = document.getElementById("popup-close");
+if (popupClose) {
+  popupClose.addEventListener("click", hidePopup);
+}
+
+const popupOverlay = document.getElementById("success-popup");
+if (popupOverlay) {
+  popupOverlay.addEventListener("click", (e) => {
+    if (e.target === popupOverlay) hidePopup();
   });
 }

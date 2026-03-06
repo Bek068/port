@@ -193,10 +193,13 @@
     </footer>
 
     <!-- Success popup -->
-    <div class="toast" id="success-toast" aria-live="polite">
-      <span class="toast-icon" aria-hidden="true">&#10003;</span>
-      <p>Your message has been sent successfully!</p>
-      <button class="toast-close" id="toast-close" aria-label="Close">&times;</button>
+    <div class="popup-overlay" id="success-popup">
+      <div class="popup-box">
+        <button class="popup-close" id="popup-close" aria-label="Close">&times;</button>
+        <span class="popup-icon" aria-hidden="true">&#10003;</span>
+        <h3>Message Sent!</h3>
+        <p>Your message has been sent successfully to the administrator.</p>
+      </div>
     </div>
 
     <script src="script.js"></script>
