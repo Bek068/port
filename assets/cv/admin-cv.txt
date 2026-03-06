@@ -1,0 +1,35 @@
+BIBEK RIJAL
+Front-End Developer
+
+Email: admin@example.com
+Location: Bagmati, Nepal
+
+PROFILE
+Passionate front-end developer from Nepal dedicated to building beautiful, performant, and accessible web interfaces.
+
+EXPERIENCE
+- Front-End Developer, PixelForge Studio (2023 - Present)
+- Junior Web Developer, NorthGrid Labs (2021 - 2023)
+
+CORE SKILLS
+- HTML5, CSS3, Sass / SCSS
+- JavaScript (ES6+), TypeScript
+- React, Next.js, Vue.js
+- Tailwind CSS, Bootstrap, Material UI
+- Git, GitHub, CI/CD basics
+- Responsive & Mobile-First Design
+- Web Accessibility (WCAG)
+- Figma to Code, UI/UX Principles
+- REST API Integration
+- Performance Optimization & Core Web Vitals
+
+SELECTED PROJECTS
+- Smart Inventory Dashboard
+- Campus Event Portal
+- Healthcare Booking App
+
+EDUCATION
+B.Sc. in Computer Science
+
+REFERENCES
+Available upon request.
