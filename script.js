@@ -131,36 +131,25 @@ if (contactForm) {
         message,
       }),
     })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success === "true" || data.success === true) {
-          if (status) {
-            status.textContent = "Message sent successfully!";
-            status.style.color = "#39ff14";
-          }
-          contactForm.reset();
-          // Show success dialog
-          const dialog = document.getElementById("success-dialog");
-          if (dialog) {
-            dialog.classList.add("show");
-            dialog.setAttribute("aria-hidden", "false");
-          }
-        } else {
-          if (status) {
-            status.textContent = "Something went wrong. Please try again.";
-            status.style.color = "#ff4060";
-          }
+      .then((res) => {
+        if (!res.ok) throw new Error("Server error");
+        return res.json();
+      })
+      .then(() => {
+        if (status) {
+          status.textContent = "";
+        }
+        contactForm.reset();
+        // Show success dialog
+        const dialog = document.getElementById("success-dialog");
+        if (dialog) {
+          dialog.classList.add("show");
+          dialog.setAttribute("aria-hidden", "false");
         }
       })
       .catch(() => {
-        // Fallback: open mail client if fetch was blocked (e.g. by ad blocker)
-        const fallbackSubject = encodeURIComponent(`[Portfolio Contact] ${subject}`);
-        const fallbackBody = encodeURIComponent(
-          `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
-        );
-        window.location.href = `mailto:rijal.bebek68@gmail.com?subject=${fallbackSubject}&body=${fallbackBody}`;
         if (status) {
-          status.textContent = "Opening your email app as a fallback. If nothing happens, please disable your ad blocker and try again.";
+          status.textContent = "Failed to send message. Please try again.";
           status.style.color = "#ff4060";
         }
       })
