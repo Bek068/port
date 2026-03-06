@@ -424,26 +424,22 @@ textarea:focus {
   font-weight: 700;
 }
 
-/* ── Success popup ── */
-.popup-overlay {
+/* ── Success confirmation dialog ── */
+.msg-confirm {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.7);
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   z-index: 200;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 300ms ease;
 }
 
-.popup-overlay.show {
-  opacity: 1;
-  pointer-events: auto;
+.msg-confirm.show {
+  display: flex;
 }
 
-.popup-box {
+.msg-confirm-card {
   position: relative;
   background: #111;
   border: 1px solid var(--accent);
@@ -453,15 +449,15 @@ textarea:focus {
   width: 88%;
   text-align: center;
   box-shadow: 0 0 30px rgba(57, 255, 20, 0.2);
-  transform: scale(0.85);
-  transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  animation: msg-scale-in 300ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-.popup-overlay.show .popup-box {
-  transform: scale(1);
+@keyframes msg-scale-in {
+  from { transform: scale(0.85); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
 }
 
-.popup-close {
+.msg-confirm-close {
   position: absolute;
   top: 0.75rem;
   right: 0.75rem;
@@ -476,12 +472,12 @@ textarea:focus {
   transition: color 150ms ease, background 150ms ease;
 }
 
-.popup-close:hover {
+.msg-confirm-close:hover {
   color: #fff;
   background: rgba(255, 255, 255, 0.1);
 }
 
-.popup-icon {
+.msg-confirm-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -495,12 +491,12 @@ textarea:focus {
   margin-bottom: 1rem;
 }
 
-.popup-box h3 {
+.msg-confirm-card h3 {
   color: var(--ink);
   margin: 0 0 0.5rem;
 }
 
-.popup-box p {
+.msg-confirm-card p {
   color: #aaa;
   margin: 0;
 }

@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=2" />
   </head>
   <body>
     <div class="bg-orb orb-left" aria-hidden="true"></div>
@@ -192,16 +192,16 @@
       </div>
     </footer>
 
-    <!-- Success popup -->
-    <div class="popup-overlay" id="success-popup">
-      <div class="popup-box">
-        <button class="popup-close" id="popup-close" aria-label="Close">&times;</button>
-        <span class="popup-icon" aria-hidden="true">&#10003;</span>
+    <!-- Success confirmation -->
+    <div class="msg-confirm" id="msg-confirm" style="display:none" hidden>
+      <div class="msg-confirm-card">
+        <button class="msg-confirm-close" id="msg-confirm-close" aria-label="Close">&times;</button>
+        <span class="msg-confirm-icon" aria-hidden="true">&#10003;</span>
         <h3>Message Sent!</h3>
         <p>Your message has been sent successfully to the administrator.</p>
       </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=2"></script>
   </body>
 </html>

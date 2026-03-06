@@ -140,8 +140,8 @@ if (contactForm) {
           status.textContent = "";
         }
         contactForm.reset();
-        // Show success popup
-        showPopup();
+        // Show success confirmation
+        showMsg();
       })
       .catch(() => {
         if (status) {
@@ -158,31 +158,36 @@ if (contactForm) {
   });
 }
 
-// ── Popup handler ──
-let popupTimer = null;
+// ── Success confirmation dialog ──
+let msgTimer = null;
+const msgDialog = document.getElementById("msg-confirm");
 
-function hidePopup() {
-  const popup = document.getElementById("success-popup");
-  if (popup) popup.classList.remove("show");
-  clearTimeout(popupTimer);
+function hideMsg() {
+  if (msgDialog) {
+    msgDialog.classList.remove("show");
+    msgDialog.hidden = true;
+  }
+  clearTimeout(msgTimer);
 }
 
-function showPopup() {
-  const popup = document.getElementById("success-popup");
-  if (!popup) return;
-  popup.classList.add("show");
-  clearTimeout(popupTimer);
-  popupTimer = setTimeout(hidePopup, 3000);
+function showMsg() {
+  if (!msgDialog) return;
+  msgDialog.hidden = false;
+  msgDialog.style.display = "";
+  // Force reflow so the scale-in animation replays each time
+  void msgDialog.offsetWidth;
+  msgDialog.classList.add("show");
+  clearTimeout(msgTimer);
+  msgTimer = setTimeout(hideMsg, 3000);
 }
 
-const popupClose = document.getElementById("popup-close");
-if (popupClose) {
-  popupClose.addEventListener("click", hidePopup);
+const msgClose = document.getElementById("msg-confirm-close");
+if (msgClose) {
+  msgClose.addEventListener("click", hideMsg);
 }
 
-const popupOverlay = document.getElementById("success-popup");
-if (popupOverlay) {
-  popupOverlay.addEventListener("click", (e) => {
-    if (e.target === popupOverlay) hidePopup();
+if (msgDialog) {
+  msgDialog.addEventListener("click", (e) => {
+    if (e.target === msgDialog) hideMsg();
   });
 }
