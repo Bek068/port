@@ -194,14 +194,11 @@
 
     <script src="script.js"></script>
 
-    <!-- Success dialog -->
-    <div class="dialog-overlay" id="success-dialog" aria-hidden="true">
-      <div class="dialog-box">
-        <span class="dialog-icon" aria-hidden="true">&#10003;</span>
-        <h3>Message Sent!</h3>
-        <p>Your message has been sent successfully to the administrator.</p>
-        <button class="btn btn-primary dialog-close" id="dialog-close">OK</button>
-      </div>
+    <!-- Success popup -->
+    <div class="toast" id="success-toast" aria-live="polite">
+      <span class="toast-icon" aria-hidden="true">&#10003;</span>
+      <p>Your message has been sent successfully!</p>
+      <button class="toast-close" id="toast-close" aria-label="Close">&times;</button>
     </div>
   </body>
 </html>

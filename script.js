@@ -140,12 +140,8 @@ if (contactForm) {
           status.textContent = "";
         }
         contactForm.reset();
-        // Show success dialog
-        const dialog = document.getElementById("success-dialog");
-        if (dialog) {
-          dialog.classList.add("show");
-          dialog.setAttribute("aria-hidden", "false");
-        }
+        // Show success toast
+        showToast();
       })
       .catch(() => {
         if (status) {
@@ -162,18 +158,23 @@ if (contactForm) {
   });
 }
 
-// ── Dialog close handler ──
-const dialogClose = document.getElementById("dialog-close");
-const successDialog = document.getElementById("success-dialog");
-if (dialogClose && successDialog) {
-  dialogClose.addEventListener("click", () => {
-    successDialog.classList.remove("show");
-    successDialog.setAttribute("aria-hidden", "true");
-  });
-  successDialog.addEventListener("click", (e) => {
-    if (e.target === successDialog) {
-      successDialog.classList.remove("show");
-      successDialog.setAttribute("aria-hidden", "true");
-    }
+// ── Toast popup handler ──
+let toastTimer = null;
+function showToast() {
+  const toast = document.getElementById("success-toast");
+  if (!toast) return;
+  toast.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 3000);
+}
+
+const toastClose = document.getElementById("toast-close");
+if (toastClose) {
+  toastClose.addEventListener("click", () => {
+    const toast = document.getElementById("success-toast");
+    if (toast) toast.classList.remove("show");
+    clearTimeout(toastTimer);
   });
 }
