@@ -157,19 +157,19 @@
         <form id="contact-form" novalidate>
           <div class="field-row">
             <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" required />
+            <input type="text" id="name" name="name" required autocomplete="name" />
             <small class="error" id="name-error"></small>
           </div>
 
           <div class="field-row">
             <label for="email">Your Email</label>
-            <input type="email" id="email" name="email" required />
+            <input type="email" id="email" name="email" required autocomplete="email" />
             <small class="error" id="email-error"></small>
           </div>
 
           <div class="field-row">
             <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject" required />
+            <input type="text" id="subject" name="subject" required autocomplete="off" />
             <small class="error" id="subject-error"></small>
           </div>
 
@@ -193,5 +193,15 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <!-- Success dialog -->
+    <div class="dialog-overlay" id="success-dialog" aria-hidden="true">
+      <div class="dialog-box">
+        <span class="dialog-icon" aria-hidden="true">&#10003;</span>
+        <h3>Message Sent!</h3>
+        <p>Your message has been sent successfully to the administrator.</p>
+        <button class="btn btn-primary dialog-close" id="dialog-close">OK</button>
+      </div>
+    </div>
   </body>
 </html>

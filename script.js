@@ -135,10 +135,16 @@ if (contactForm) {
       .then((data) => {
         if (data.success === "true" || data.success === true) {
           if (status) {
-            status.textContent = "Message sent successfully! I'll get back to you soon.";
+            status.textContent = "Message sent successfully!";
             status.style.color = "#39ff14";
           }
           contactForm.reset();
+          // Show success dialog
+          const dialog = document.getElementById("success-dialog");
+          if (dialog) {
+            dialog.classList.add("show");
+            dialog.setAttribute("aria-hidden", "false");
+          }
         } else {
           if (status) {
             status.textContent = "Something went wrong. Please try again.";
@@ -147,8 +153,14 @@ if (contactForm) {
         }
       })
       .catch(() => {
+        // Fallback: open mail client if fetch was blocked (e.g. by ad blocker)
+        const fallbackSubject = encodeURIComponent(`[Portfolio Contact] ${subject}`);
+        const fallbackBody = encodeURIComponent(
+          `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+        );
+        window.location.href = `mailto:rijal.bebek68@gmail.com?subject=${fallbackSubject}&body=${fallbackBody}`;
         if (status) {
-          status.textContent = "Network error. Please check your connection and try again.";
+          status.textContent = "Opening your email app as a fallback. If nothing happens, please disable your ad blocker and try again.";
           status.style.color = "#ff4060";
         }
       })
@@ -158,5 +170,21 @@ if (contactForm) {
           submitBtn.textContent = "Send Email";
         }
       });
+  });
+}
+
+// ── Dialog close handler ──
+const dialogClose = document.getElementById("dialog-close");
+const successDialog = document.getElementById("success-dialog");
+if (dialogClose && successDialog) {
+  dialogClose.addEventListener("click", () => {
+    successDialog.classList.remove("show");
+    successDialog.setAttribute("aria-hidden", "true");
+  });
+  successDialog.addEventListener("click", (e) => {
+    if (e.target === successDialog) {
+      successDialog.classList.remove("show");
+      successDialog.setAttribute("aria-hidden", "true");
+    }
   });
 }
