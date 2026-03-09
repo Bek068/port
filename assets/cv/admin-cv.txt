@@ -1,11 +1,11 @@
 BIBEK RIJAL
-Front-End Developer
+Front-End Developer in Training
 
-Email: admin@example.com
-Location: Bagmati, Nepal
+Email: rijal.bebek68@gmail.com
+Location: Gandaki, Nepal
 
 PROFILE
-Passionate front-end developer from Nepal dedicated to building beautiful, performant, and accessible web interfaces.
+Bibek Rijal, a 21-year-old student from Nepal, is currently pursuing a B.Sc. CSIT in Chitwan. With a strong interest in programming and web technologies, he is building a foundation in software development and front-end engineering. His goal is to grow into a skilled developer capable of creating efficient, user-friendly applications.
 
 EXPERIENCE
 - Front-End Developer, PixelForge Studio (2023 - Present)
@@ -29,7 +29,12 @@ SELECTED PROJECTS
 - Healthcare Booking App
 
 EDUCATION
-B.Sc. in Computer Science
+Bachelor of Science in Computer Science and Information Technology (B.Sc. CSIT) – Ongoing.
+
+PROJECTS & LEARNING
+Exploring small projects in JavaScript, Python, C, and C++ to strengthen programming fundamentals
+
+Practicing front-end design and development through coursework and personal experiments
 
 REFERENCES
-Available upon request.
+Available upon request..
