@@ -252,6 +252,8 @@ if (msgDialog) {
   const ROWS = canvas.height / GRID;
 
   let snake, dir, nextDir, food, score, speed, gameLoop, running;
+  let highScore = 0;
+  const highScoreEl = document.getElementById("game-highscore");
 
   function init() {
     snake = [{ x: 10, y: 10 }, { x: 9, y: 10 }, { x: 8, y: 10 }];
@@ -349,6 +351,10 @@ if (msgDialog) {
   function gameOver() {
     clearInterval(gameLoop);
     running = false;
+    if (score > highScore) {
+      highScore = score;
+      highScoreEl.textContent = highScore;
+    }
     ctx.fillStyle = "rgba(0,0,0,0.6)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "#ff4060";
@@ -357,7 +363,7 @@ if (msgDialog) {
     ctx.fillText("Game Over!", canvas.width / 2, canvas.height / 2 - 10);
     ctx.fillStyle = "#fff";
     ctx.font = "16px Manrope, sans-serif";
-    ctx.fillText("Score: " + score, canvas.width / 2, canvas.height / 2 + 20);
+    ctx.fillText("Score: " + score + "  |  Best: " + highScore, canvas.width / 2, canvas.height / 2 + 20);
     startBtn.textContent = "Play Again";
     startBtn.style.display = "";
   }
