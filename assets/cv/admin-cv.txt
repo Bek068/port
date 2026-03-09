@@ -7,10 +7,6 @@ Location: Gandaki, Nepal
 PROFILE
 Bibek Rijal, a 21-year-old student from Nepal, is currently pursuing a B.Sc. CSIT in Chitwan. With a strong interest in programming and web technologies, he is building a foundation in software development and front-end engineering. His goal is to grow into a skilled developer capable of creating efficient, user-friendly applications.
 
-EXPERIENCE
-- Front-End Developer, PixelForge Studio (2023 - Present)
-- Junior Web Developer, NorthGrid Labs (2021 - 2023)
-
 CORE SKILLS
 - HTML5, CSS3, Sass / SCSS
 - JavaScript (ES6+), TypeScript
