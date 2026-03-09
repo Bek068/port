@@ -19,11 +19,6 @@ CORE SKILLS
 - REST API Integration
 - Performance Optimization & Core Web Vitals
 
-SELECTED PROJECTS
-- Smart Inventory Dashboard
-- Campus Event Portal
-- Healthcare Booking App
-
 EDUCATION
 Bachelor of Science in Computer Science and Information Technology (B.Sc. CSIT) – Ongoing.
 
