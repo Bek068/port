@@ -6,14 +6,13 @@ const root = document.documentElement;
 
 function setTheme(theme) {
   root.setAttribute("data-theme", theme);
-  localStorage.setItem("theme", theme);
+  try { localStorage.setItem("theme", theme); } catch { /* private browsing */ }
 }
 
-// Restore saved preference
-const savedTheme = localStorage.getItem("theme");
-if (savedTheme) {
-  setTheme(savedTheme);
-}
+// Restore saved preference (default to dark)
+let savedTheme;
+try { savedTheme = localStorage.getItem("theme"); } catch { /* private browsing */ }
+setTheme(savedTheme || "dark");
 
 if (themeToggle) {
   themeToggle.addEventListener("click", () => {
@@ -247,6 +246,19 @@ if (msgDialog) {
   if (!bibekEl || !overlay || !canvas) return;
 
   const ctx = canvas.getContext("2d");
+  // Polyfill roundRect for older browsers
+  if (!ctx.roundRect) {
+    CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
+      if (typeof r === "number") r = [r];
+      const rad = r[0] || 0;
+      this.moveTo(x + rad, y);
+      this.arcTo(x + w, y, x + w, y + h, rad);
+      this.arcTo(x + w, y + h, x, y + h, rad);
+      this.arcTo(x, y + h, x, y, rad);
+      this.arcTo(x, y, x + w, y, rad);
+      this.closePath();
+    };
+  }
   const GRID = 20;
   const COLS = canvas.width / GRID;
   const ROWS = canvas.height / GRID;
