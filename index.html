@@ -34,6 +34,12 @@
           <li><a href="#projects">Projects</a></li>
           <li><a href="#cv">CV</a></li>
           <li><a href="#contact">Contact</a></li>
+          <li>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle theme">
+              <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+              <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </button>
+          </li>
         </ul>
       </nav>
     </header>
@@ -50,7 +56,7 @@
           </p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#projects">See Projects</a>
-            <a class="btn btn-secondary" href="#contact">Send Email</a>
+            <a class="btn btn-secondary" href="#contact">Send Message</a>
           </div>
           <div class="hero-socials">
             <a href="https://github.com/Bek068" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
@@ -68,7 +74,7 @@
           </div>
         </div>
         <div class="hero-image">
-          <img src="assets/image.jpg" alt="Bibek Rijal" />
+          <img src="assets/image.jpg" alt="Bibek Rijal" id="hero-img" />
         </div>
       </section>
 
@@ -137,11 +143,26 @@
           <p class="kicker">Professional Profile</p>
           <h2>Curriculum Vitae</h2>
         </div>
-        <p>
-          Get a quick overview of my experience, technical skills, and recent work.
-        </p>
+
+        <div class="cv-snapshot">
+          <div class="cv-snap-item">
+            <h3>Profile</h3>
+            <p>
+              I&rsquo;m a 21-year-old B.Sc. CSIT student from Nepal with a strong passion for
+              programming and web technologies. Currently building a foundation in .........
+            </p>
+          </div>
+          <div class="cv-snap-item">
+            <h3>Education</h3>
+            <p class="cv-snap-degree">B.Sc. Computer Science &amp; Information Technology (CSIT)</p>
+            <p class="cv-snap-meta">Chitwan, Nepal &bull; Ongoing</p>
+            <p class="cv-snap-degree" style="margin-top:0.5rem">+2 / SLC</p>
+            <p class="cv-snap-meta">Nawalpur, Nepal &bull; Completed</p>
+          </div>
+        </div>
+
         <a class="btn btn-primary" href="assets/cv/admin-cv.html">
-          Visit 
+          View Full CV
         </a>
       </section>
 
@@ -187,11 +208,35 @@
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p>© <span id="year"></span> Bibek Rijal</p>
-        <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 0.5rem;">This website is fully designed by Artificial Intelligence using "Claude Opus 4.6"</p>
+        <p id="copyright-text">© <span id="year"></span> <span id="footer-bibek" style="cursor:pointer;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px">Bibek</span> Rijal</p>
+        <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 0.5rem;">Portfolio website  &mdash; powered by Claude Opus 4.6</p>
         <a href="#home">Back to top</a>
       </div>
     </footer>
+
+    <!-- Snake Game overlay (hidden) -->
+    <div class="game-overlay" id="game-overlay" style="display:none">
+      <div class="game-container">
+        <div class="game-header">
+          <h3>&#127820; Snake Game</h3>
+          <div class="game-score">Score: <span id="game-score">0</span></div>
+          <button class="game-close" id="game-close" aria-label="Close game">&times;</button>
+        </div>
+        <canvas id="snake-canvas" width="400" height="400"></canvas>
+        <div class="game-controls">
+          <p class="game-hint">Use arrow keys or WASD to move. Tap the buttons on mobile.</p>
+          <div class="game-dpad">
+            <button class="dpad-btn dpad-up" data-dir="up">&#9650;</button>
+            <div class="dpad-mid">
+              <button class="dpad-btn dpad-left" data-dir="left">&#9664;</button>
+              <button class="dpad-btn dpad-right" data-dir="right">&#9654;</button>
+            </div>
+            <button class="dpad-btn dpad-down" data-dir="down">&#9660;</button>
+          </div>
+        </div>
+        <button class="btn btn-primary game-start" id="game-start">Start Game</button>
+      </div>
+    </div>
 
     <!-- Success confirmation -->
     <div class="msg-confirm" id="msg-confirm" style="display:none" hidden>
